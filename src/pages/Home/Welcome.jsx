@@ -20,6 +20,12 @@ export default function Welcome() {
           <Link to="/departments/3">
             <button>Physics</button>
           </Link>
+          <Link to="/departments/4">
+            <button>Art</button>
+          </Link>
+          <Link to="/departments/5">
+            <button>Architecture</button>
+          </Link>
         </div>
       </div>
 
@@ -33,6 +39,9 @@ export default function Welcome() {
             <button>Dr. Johnson</button>
           </Link>
           <Link to="/professors/3">
+            <button>Dr. Williams</button>
+          </Link>
+          <Link to="/professors/4">
             <button>Dr. Brown</button>
           </Link>
         </div>
@@ -48,8 +57,12 @@ export default function Welcome() {
             <button>Dr. Johnson's Courses</button>
           </Link>
           <Link to="/professors/3/courses">
+            <button>Dr. Williams's Courses</button>
+          </Link>
+          <Link to="/professors/4/courses">
             <button>Dr. Brown's Courses</button>
           </Link>
+
         </div>
       </div>
     </div>

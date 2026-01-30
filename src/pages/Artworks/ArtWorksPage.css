@@ -1,0 +1,82 @@
+
+
+.art-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.art-list-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.art-list-container form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.art-list-container form input {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 250px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.art-list-container form button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #2980b9;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.art-list-container form button:hover {
+  background-color: #1f77b1;
+}
+
+.art-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.art-list-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.art-list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.art-list-item img {
+  width: 100%;
+  display: block;
+}
+
+.art-list-item h3 {
+  font-size: 1.1rem;
+  margin: 10px;
+  color: #222;
+}
+
+.art-list-item p {
+  font-size: 0.9rem;
+  margin: 0 10px 10px 10px;
+  color: #555;
+}

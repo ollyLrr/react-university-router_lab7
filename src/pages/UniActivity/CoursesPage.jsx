@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { courses } from "../data/professors.js";
+import { courses } from "../../data/professors.js";
 
 export function coursesLoader({ params }) {
   const profCourses = courses.filter(c => c.profId === Number(params.profId));

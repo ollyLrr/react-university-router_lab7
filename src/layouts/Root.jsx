@@ -10,6 +10,9 @@ export default function Root() {
             Home
           </NavLink>
           <NavLink to="/about">About</NavLink>
+          
+          {/* <NavLink to="/universities">Universities</NavLink> */}
+          <NavLink to="/artworks">Our Artworks</NavLink>
           <NavLink to="/admin">Admin</NavLink>
         </nav>
       </header>

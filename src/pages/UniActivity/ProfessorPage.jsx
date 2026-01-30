@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from "react-router-dom";
-import { professors } from "../data/professors.js";
+import { professors } from "../../data/professors.js";
 
 export function professorLoader({ params }) {
   const prof = professors.find(p => p.id === Number(params.profId));

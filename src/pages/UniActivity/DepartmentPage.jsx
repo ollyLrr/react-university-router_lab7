@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { departments } from "../data/departments.js";
+import { departments } from "../../data/departments.js";
 
 export function departmentLoader({ params }) {
   const dept = departments.find(d => d.id === Number(params.deptId));
