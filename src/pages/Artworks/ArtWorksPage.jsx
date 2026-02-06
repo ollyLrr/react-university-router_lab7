@@ -1,33 +1,39 @@
-
-import { useLoaderData, Link, useNavigation } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchArtworks, setQuery } from "../../features/artworks/artworksSlice";
 import SearchForm from "../../components/SearchForm";
+import { Link } from "react-router-dom";
 import "./ArtWorksPage.css";
 
-export async function artWorksLoader({ request }) {
-  const url = new URL(request.url);
-  const query = url.searchParams.get("q") || "monet";
-
-  const res = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&limit=20&fields=id,title,image_id,artist_title,date_display`);
-  if (!res.ok) throw new Response("Failed to fetch artworks", { status: res.status });
-
-  const data = await res.json();
-  return data.data;
-}
-
 export default function ArtWorksPage() {
-  const artworks = useLoaderData();
-  const navigation = useNavigation();
+  const { items, isLoading, error, query } = useSelector(
+    (state) => state.artworks
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchArtworks(query));
+  }, [dispatch, query]);
+
+  const handleSearch = (newQuery) => {
+    dispatch(setQuery(newQuery));
+  };
 
   return (
     <div className="art-list-container">
       <h2>Artworks</h2>
-      <SearchForm placeholder="Search artworks " paramName="q" />
 
-      {navigation.state === "loading" && <p>Loading...</p>}
-      {artworks.length === 0 && <p>No artworks found</p>}
+      <SearchForm
+        placeholder="Search artworks"
+        onSearch={handleSearch}
+      />
+
+      {isLoading && <p>Loading...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!isLoading && items.length === 0 && <p>No artworks found</p>}
 
       <ul className="art-list-grid">
-        {artworks.map((art) => (
+        {items.map((art) => (
           <li key={art.id} className="art-list-item">
             <Link to={`/artworks/${art.id}`}>
               {art.image_id && (

@@ -1,18 +1,22 @@
-import { Form, useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
-export default function SearchForm({ placeholder = "Search...", param = "q" }) {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get(param) || "";
+export default function SearchForm({ placeholder = "Search...", onSearch }) {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (onSearch) onSearch(input);
+  };
 
   return (
-    <Form method="get">
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name={param}
-        defaultValue={query}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
         placeholder={placeholder}
       />
       <button type="submit">Search</button>
-    </Form>
+    </form>
   );
 }
